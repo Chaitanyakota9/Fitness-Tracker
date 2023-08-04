@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  main {
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .exercise-form {
+    width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 2rem;
+  }
+  
+  .exercise-form h2 {
+    margin-bottom: 1rem;
+  }
+  
+  .exercise-form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .exercise-form input[type="text"],
+  .exercise-form textarea,
+  .exercise-form input[type="number"] {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .exercise-form textarea {
+    resize: vertical;
+  }
+  
+  .exercise-form button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .exercise-form button:hover {
+    background-color: #555;
+  }
+  

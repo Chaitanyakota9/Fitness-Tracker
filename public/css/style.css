@@ -1,0 +1,118 @@
+
+/* style.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+  position: relative;
+}
+
+main {
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-button {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  display: inline-block;
+  margin-top: 5px;
+  padding: 8px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #767676;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Hover effect for the header button */
+.header-button:hover {
+  background-color: #5c5c5c;
+}
+
+.activity-form {
+  width: 45%;
+}
+
+.activity-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.activity-form label {
+  margin-top: 0.5rem;
+}
+
+.activity-list h2{
+  margin-bottom: 1rem;
+}
+
+
+.activity-form input, .activity-form button {
+  margin-top: 0.3rem;
+  padding: 0.5rem;
+}
+
+.activity-form button:hover{
+  background-color: #6c6c6c;
+}
+
+
+.activity-list{
+  width: 50%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 1rem;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.activity-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.activity-list li{
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.activity-list li:last-child{
+  border-bottom: none;
+}
+
+.activity-list button{
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 0.3rem 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.activity-list button:hover{
+  background-color: #555;
+}
+
+.activity-list button[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.activity-list strong {
+  font-weight: bold;
+}
+

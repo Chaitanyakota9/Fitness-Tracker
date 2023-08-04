@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add New Exercise</title>
+  <link rel="stylesheet" href="css/add_exercise_style.css">
+</head>
+<body>
+  <header>
+    <h1>Fitness Tracker</h1>
+  </header>
+  <main class="add-exercise-page" id="add-exercise-page">
+    <div class="exercise-form">
+      <h2>Add New Exercise</h2>
+      <form id="exercise-form">
+        <label for="exercise-name">Exercise Name:</label>
+        <input type="text" id="exercise-name" required>
+
+        <label for="exercise-description">Description:</label>
+        <textarea id="exercise-description" rows="4" required></textarea>
+
+        <label for="exercise-duration">Duration (in minutes):</label>
+        <input type="number" id="exercise-duration" required>
+
+        <label for="exercise-images">Image URLs (separated by commas):</label>
+        <input type="text" id="exercise-images" required>
+
+        <button type="submit">Add Exercise</button>
+      </form>
+    </div>
+  </main>
+  <script src="js/add_exercise_script.js"></script>
+</body>
+</html>
