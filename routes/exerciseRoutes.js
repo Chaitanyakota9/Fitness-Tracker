@@ -17,11 +17,18 @@ router.post('/', async (req, res) => {
 
 // Get all exercises
 router.get('/', async (req, res) => {
+  const name = req.query.name;
+  console.log(name)
   try {
-    const exercises = await Exercise.find();
-    res.json(exercises);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
+    const exercise = await Exercise.findOne({ name: exerciseName });
+    if (!exercise) {
+      return res.status(404).json({ message: 'Exercise not found' });
+    }
+
+    res.json(exercise);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
@@ -30,10 +37,11 @@ router.get('/:name', async (req, res) => {
   const exerciseName = req.params.name;
   try {
     const exercise = await Exercise.findOne({ name: exerciseName });
-    if (exercise) {
-      res.json(exercise);
-    } else {
-      res.status(404).json({ message: 'Exercise not found' });
+    if(exercise){
+      res.json(exercise)
+    }
+    else{
+      return res.status(404).json({ description: 'Exercise not found',time: 0 });
     }
   } catch (err) {
     res.status(500).json({ error: err.message });
