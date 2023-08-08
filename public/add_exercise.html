@@ -12,10 +12,22 @@
   </header>
   <main class="add-exercise-page" id="add-exercise-page">
     <div class="exercise-form">
-      <h2>Add New Exercise</h2>
+      <h2>Practice Exercise</h2>
       <form id="exercise-form">
-        <label for="exercise-name">Exercise Name:</label>
-        <input type="text" id="exercise-name" required>
+        <label for="exercise-name">Select Exercise:</label>
+        <!-- <input type="text" id="exercise-name"> -->
+        <div class = "container">
+          <div class="exercise-options">
+            <button class="exercise-option" type="button" onclick="displayExercises('leg')">Leg Exercises</button>
+            <button class="exercise-option" type="button" onclick="displayExercises('hand')">Hand Exercises</button>
+            <button class="exercise-option" type="button" onclick="displayExercises('head')">Head Exercises</button>
+            <button class="exercise-option" type="button" onclick="displayExercises('backbone')">Backbone Exercises</button>
+            <button class="exercise-option" type="button" onclick="displayExercises('neck')">Neck Exercises</button>
+          </div>
+          <hr>
+      
+          <div class="exercise-list" id="exerciseList"></div>
+        </div>
 
         <label for="exercise-description">Description:</label>
         <textarea id="exercise-description" rows="4" ></textarea>
@@ -23,10 +35,7 @@
         <label for="exercise-duration">Duration (in minutes):</label>
         <input type="number" id="exercise-duration" >
 
-        <label for="exercise-images">Image URLs (separated by commas):</label>
-        <input type="text" id="exercise-images">
-
-        <button type="submit">Add Exercise</button>
+        <button class="submitButton" onclick="StartExercise()" type="submit">Start Practice</button>
       </form>
     </div>
   </main>

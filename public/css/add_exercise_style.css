@@ -18,7 +18,7 @@ body {
   }
   
   .exercise-form {
-    width: 400px;
+    width: 800px;
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 2rem;
@@ -48,17 +48,73 @@ body {
     resize: vertical;
   }
   
-  .exercise-form button {
+  .exercise-form .submitButton {
     background-color: #333;
     color: #fff;
     border: none;
+    margin-top: 10px;
     padding: 0.5rem;
     font-size: 1rem;
     border-radius: 5px;
     cursor: pointer;
   }
   
-  .exercise-form button:hover {
+  .exercise-form .submitButton:hover {
     background-color: #555;
   }
+
+
+
+  .container {
+    max-width: 800px;
+    background-color: #ffffff;
+    border-radius: 30px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .exercise-options {
+    display: inline;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+
+  .exercise-option {
+    cursor: pointer;
+    margin: 2px;
+    padding: 10px 20px;
+    color: white;
+    background-color: #4d4949;
+    border: none;
+    border-radius: 30px;
+    /* transition: background-color 0.3s ease; */
+  }
+
+  .exercise-option:hover{
+    background-color: #000000;
+  }
+
+  .exercise-list {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .exercise-button {
+    cursor: pointer;
+    padding: 5px 10px;
+    color: white;
+    background-color: #4d4949;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+  }
+
+  .exercise-button:hover {
+    background-color: #000000;
+  }
+
+
   

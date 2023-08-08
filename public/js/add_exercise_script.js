@@ -1,43 +1,53 @@
 // js/add_exercise_script.js
-const exerciseForm = document.getElementById('exercise-form');
-
-// Function to add a new exercise
-async function addExercise(event) {
+async function StartExercise() {
   event.preventDefault();
-  const exercise_name = document.getElementById('exercise-name').value;
-  const desc = document.getElementById('exercise-description');
+  const time = document.getElementById('exercise-duration').value;
+  startTimer(time)
+}
 
-  try {
-    const response = await fetch(`api/exercises/${exercise_name}`);
+async function startTimer(duration) {
+  // Wait for the specified duration (in milliseconds)
+  await new Promise(resolve => setTimeout(resolve, duration * 600));
+  console.log("time up")
+}
 
-    /*if (!response.ok) {
-      const errorData = await response.json();
-      desc.innerHTML = `${errorData.message}`;
-      return;
-    }*/
+async function getExerciseInfo(exerciseName) {
+  const response = await fetch(`api/exercises/${exerciseName}`);
+  const data = await response.json();
+  return data;
+}
 
-    const exerciseData = await response.json();
-    desc.innerHTML = `${exerciseData.description}`;
-    document.getElementById('exercise-duration').value = exerciseData.time;
+function displayExercises(category) {
+  const exerciseListDiv = document.getElementById('exerciseList');
+  exerciseListDiv.innerHTML = '';
 
-  } catch (error) {
-    desc.innerHTML = `${error.message}`;
-  }
+  const exercises = {
+    leg: ['Tadasana', 'Exercise 2', 'Exercise 3'],
+    hand: ['Exercise 4', 'Exercise 5'],
+    head: ['Exercise 6', 'Exercise 7'],
+    backbone: ['Exercise 8', 'Exercise 9', 'Exercise 10'],
+    neck: ['Exercise 11', 'Exercise 12']
+  };
 
-  /*try {
-    await fetch('/api/exercises', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ name: exercise_name }),
+  exercises[category].forEach(async (exercise) => {
+    const exerciseDiv = document.createElement('div');
+    exerciseDiv.className = 'exercise';
+    
+    const exerciseButton = document.createElement('button');
+    exerciseButton.type = 'button';
+    exerciseButton.className = 'exercise-button';
+    exerciseButton.textContent = exercise;
+    exerciseButton.addEventListener('click', async () => {
+      const exerciseData = await getExerciseInfo(exercise);
+      const exerciseDescriptionDiv = document.getElementById('exercise-description');
+      exerciseDescriptionDiv.innerHTML = `${exerciseData.description}`;
+      document.getElementById('exercise-duration').value = exerciseData.time;
     });
-    const data = await response.json();
-    document.getElementById('exercise-description').innerHTML = data.description
-  } catch (err) {
-    console.error('Error adding exercise:', err);
-  }*/
+
+    exerciseDiv.appendChild(exerciseButton);
+    exerciseListDiv.appendChild(exerciseDiv);
+  });
 }
 
 // Event listener for form submission
-exerciseForm.addEventListener('submit', addExercise);
+// exerciseForm.addEventListener('submit', StartExercise);
