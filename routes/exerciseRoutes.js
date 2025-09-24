@@ -17,15 +17,9 @@ router.post('/', async (req, res) => {
 
 // Get all exercises
 router.get('/', async (req, res) => {
-  const name = req.query.name;
-  console.log(name)
   try {
-    const exercise = await Exercise.findOne({ name: exerciseName });
-    if (!exercise) {
-      return res.status(404).json({ message: 'Exercise not found' });
-    }
-
-    res.json(exercise);
+    const exercises = await Exercise.find();
+    res.json(exercises);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Server error' });

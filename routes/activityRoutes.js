@@ -5,20 +5,53 @@ const Activity = require('../models/activity');
 
 // Create a new activity
 router.post('/', async (req, res) => {
-  const { name, date, completed, duration } = req.body;
-  var calories_burned;
-  if (completed) {
-    calories_burned = duration * 5;
-  } else {
-    calories_burned = 0;
-  }
-  Activity.create({ name, date, completed, duration, calories_burned })
-    .then((data) => {
-      res.json(data);
-    })
-    .catch((err) => {
-      res.send(err);
+  try {
+    const { 
+      name, 
+      date, 
+      completed, 
+      duration, 
+      activity_type, 
+      intensity, 
+      notes, 
+      distance, 
+      sets, 
+      reps, 
+      weight, 
+      heart_rate_avg, 
+      heart_rate_max 
+    } = req.body;
+
+    // Calculate calories based on activity type and intensity
+    let calories_burned = 0;
+    if (completed) {
+      const baseCalories = duration * 5; // base 5 calories per minute
+      const intensityMultiplier = intensity === 'low' ? 0.7 : intensity === 'high' ? 1.5 : 1.0;
+      const typeMultiplier = activity_type === 'cardio' ? 1.2 : activity_type === 'strength' ? 1.1 : 1.0;
+      calories_burned = Math.round(baseCalories * intensityMultiplier * typeMultiplier);
+    }
+
+    const activity = await Activity.create({
+      name,
+      date: date || new Date(),
+      completed: completed || false,
+      duration,
+      calories_burned,
+      activity_type: activity_type || 'other',
+      intensity: intensity || 'moderate',
+      notes,
+      distance,
+      sets,
+      reps,
+      weight,
+      heart_rate_avg,
+      heart_rate_max
     });
+
+    res.json(activity);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
 
 // Mark an activity as completed

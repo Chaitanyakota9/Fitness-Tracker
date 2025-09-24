@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,41 +5,284 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fitness Tracker</title>
   <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <h1>Fitness Tracker</h1>
-    <a href="add_exercise.html" class="header-button">Practice Exercise</a>
-  </header>
-  <main class="main-page" id="main-page">
-    <div class="activity-form" id="original-form">
-      <h2>Add New Activity</h2>
-      <form id="activity-form" method="post">
-        <label for="name">Activity Name:</label>
-        <input type="text" id="name" required>
-
-        <label for="date">Date:</label>
-        <input type="date" id="date" required>
-
-        <label for="completed">Completed (0/1):</label>
-        <input type="number" id="completed" required>
-
-        <label for="duration">Duration (in minutes):</label>
-        <input type="number" id="duration" required>
-
-        <button type="submit">Add Activity</button>
-      </form>
+  <div class="app-container">
+    <!-- Left Sidebar -->
+    <div class="sidebar">
+      <div class="logo">Fit</div>
+      <div class="nav-icons">
+        <div class="nav-icon">
+          <i class="fas fa-home"></i>
+        </div>
+        <div class="nav-icon">
+          <i class="fas fa-users"></i>
+        </div>
+        <div class="nav-icon">
+          <i class="fas fa-calendar"></i>
+        </div>
+        <div class="nav-icon">
+          <i class="fas fa-cog"></i>
+        </div>
+      </div>
     </div>
 
-    <div class="activity-list">
-      <h2>Activities</h2>
-      <ul id="activities"></ul>
-    </div>
-  </main>
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="content-area">
+        <!-- Header Section -->
+        <div class="header-section">
+          <h1 class="greeting">Hello, Gilbert</h1>
+          <p class="subtitle">Keep Moving & Stay Healthy</p>
+          
+          <div class="header-info">
+            <div class="date-info">
+              <i class="fas fa-calendar"></i>
+              <span id="current-date">18 August 2020</span>
+            </div>
+            <div class="notification-icon">
+              <i class="fas fa-bell"></i>
+            </div>
+          </div>
+        </div>
 
-  <!--<script async src="https://cse.google.com/cse.js?cx=447bf7324a24a488a">
-  </script>
-  <div class="gcse-search"></div> -->
+        <!-- Metrics Cards -->
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-icon">
+              <i class="fas fa-moon"></i>
+            </div>
+            <div class="metric-value">6.30 Hours</div>
+            <div class="metric-label">Sleep</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon">
+              <i class="fas fa-tint"></i>
+            </div>
+            <div class="metric-value">5 Liters</div>
+            <div class="metric-label">Water</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon">
+              <i class="fas fa-walking"></i>
+            </div>
+            <div class="metric-value">1590 Steps</div>
+            <div class="metric-label">Walking</div>
+          </div>
+        </div>
+
+        <!-- Activity Form -->
+        <div class="activity-form">
+          <h2 class="card-title">Add New Activity</h2>
+          <form id="activity-form" method="post">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Activity Name:</label>
+                <input type="text" id="name" required placeholder="Enter activity name">
+              </div>
+              <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" id="date" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="activity_type">Activity Type:</label>
+                <select id="activity_type" required>
+                  <option value="cardio">Cardio</option>
+                  <option value="strength">Strength Training</option>
+                  <option value="flexibility">Flexibility</option>
+                  <option value="sports">Sports</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="intensity">Intensity:</label>
+                <select id="intensity" required>
+                  <option value="low">Low</option>
+                  <option value="moderate" selected>Moderate</option>
+                  <option value="high">High</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="duration">Duration (minutes):</label>
+                <input type="number" id="duration" required placeholder="Enter duration">
+              </div>
+              <div class="form-group">
+                <label for="distance">Distance (km):</label>
+                <input type="number" id="distance" step="0.1" placeholder="Optional">
+              </div>
+            </div>
+
+            <div class="form-row" id="strength-fields" style="display: none;">
+              <div class="form-group">
+                <label for="sets">Sets:</label>
+                <input type="number" id="sets" placeholder="Number of sets">
+              </div>
+              <div class="form-group">
+                <label for="reps">Reps:</label>
+                <input type="number" id="reps" placeholder="Reps per set">
+              </div>
+              <div class="form-group">
+                <label for="weight">Weight (kg):</label>
+                <input type="number" id="weight" step="0.5" placeholder="Weight used">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="heart_rate_avg">Avg Heart Rate (bpm):</label>
+                <input type="number" id="heart_rate_avg" placeholder="Optional">
+              </div>
+              <div class="form-group">
+                <label for="completed">Completed:</label>
+                <select id="completed" required>
+                  <option value="false">Not Completed</option>
+                  <option value="true">Completed</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="notes">Notes:</label>
+              <textarea id="notes" placeholder="Any additional notes about your workout..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Add Activity</button>
+          </form>
+        </div>
+
+        <!-- Recent Activities -->
+        <div class="recent-activities">
+          <h2 class="card-title">Recent Activities</h2>
+          <div id="recent-activities-list"></div>
+        </div>
+
+        <!-- Activity List -->
+        <div class="activity-list">
+          <h2 class="card-title">All Activities</h2>
+          <div id="activities"></div>
+        </div>
+      </div>
+
+      <!-- Right Sidebar -->
+      <div class="right-sidebar">
+        <!-- Profile Card -->
+        <div class="profile-card">
+          <div class="profile-picture">
+            <i class="fas fa-user"></i>
+          </div>
+          <div class="profile-name">Loading...</div>
+          <div class="profile-title">Loading...</div>
+          <div class="profile-metrics">
+            <div class="metric-badge">
+              <div class="metric-badge-label">Height</div>
+              <div class="metric-badge-value">Loading...</div>
+            </div>
+            <div class="metric-badge">
+              <div class="metric-badge-label">Weight</div>
+              <div class="metric-badge-value">Loading...</div>
+            </div>
+            <div class="metric-badge">
+              <div class="metric-badge-label">Age</div>
+              <div class="metric-badge-value">Loading...</div>
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="openProfileModal()" style="margin-top: 1rem; width: 100%;">
+            <i class="fas fa-edit"></i> Edit Profile
+          </button>
+        </div>
+
+        <!-- Goals Section -->
+        <div class="goals-section">
+          <h3 class="card-title">Monthly Goals</h3>
+          <div class="goal-item">
+            <div class="goal-header">
+              <span class="goal-name">Sleep</span>
+              <span class="goal-progress">100 / 300 hours</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 33%"></div>
+            </div>
+          </div>
+          <div class="goal-item">
+            <div class="goal-header">
+              <span class="goal-name">Running</span>
+              <span class="goal-progress">20 / 100 km</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 20%"></div>
+            </div>
+          </div>
+          <div class="goal-item">
+            <div class="goal-header">
+              <span class="goal-name">Lose Weight</span>
+              <span class="goal-progress">3 / 6 kilos</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 50%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Profile Edit Modal -->
+  <div id="profileModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Edit Profile</h2>
+        <span class="close" onclick="closeProfileModal()">&times;</span>
+      </div>
+      <div class="modal-body">
+        <form id="profileForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="editName">Name:</label>
+              <input type="text" id="editName" required>
+            </div>
+            <div class="form-group">
+              <label for="editAge">Age:</label>
+              <input type="number" id="editAge" required min="1" max="120">
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="editHeight">Height (cm):</label>
+              <input type="number" id="editHeight" required min="100" max="250">
+            </div>
+            <div class="form-group">
+              <label for="editWeight">Weight (kg):</label>
+              <input type="number" id="editWeight" required min="30" max="300" step="0.1">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="editActivityLevel">Activity Level:</label>
+            <select id="editActivityLevel" required>
+              <option value="sedentary">Sedentary</option>
+              <option value="lightly_active">Lightly Active</option>
+              <option value="moderately_active">Moderately Active</option>
+              <option value="very_active">Very Active</option>
+              <option value="extremely_active">Extremely Active</option>
+            </select>
+          </div>
+          
+          <div class="modal-actions">
+            <button type="button" class="btn btn-secondary" onclick="closeProfileModal()">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
   <script src="js/script.js"></script>
 </body>
