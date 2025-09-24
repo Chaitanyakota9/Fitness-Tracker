@@ -1,0 +1,103 @@
+name: 💡 Feature Request - New Fitness Feature Idea
+description: Suggest a new feature for the fitness tracker
+title: "[FEATURE] "
+labels: ["enhancement", "needs-triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        💪 Thanks for suggesting a new feature! 
+        Your ideas help make the fitness tracker even better!
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: A clear and concise description of what the problem is.
+      placeholder: I'm always frustrated when...
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Describe the solution you'd like
+      description: A clear and concise description of what you want to happen.
+      placeholder: I would like the app to...
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Describe alternatives you've considered
+      description: A clear and concise description of any alternative solutions or features you've considered.
+      placeholder: I've also thought about...
+
+  - type: dropdown
+    id: fitness-category
+    attributes:
+      label: Which fitness area would this feature improve?
+      description: What part of fitness tracking would this feature enhance?
+      options:
+        - Activity Tracking
+        - User Profile & Goals
+        - Progress Analytics
+        - Social Features
+        - Nutrition Tracking
+        - Workout Planning
+        - Data Visualization
+        - Mobile Experience
+        - Performance & Speed
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: How important is this feature to you?
+      description: How much would this feature improve your fitness tracking experience?
+      options:
+        - 🚀 Critical - I can't use the app effectively without this
+        - 🔥 High - This would significantly improve my experience
+        - 💪 Medium - This would be nice to have
+        - 🌱 Low - This would be a small improvement
+    validations:
+      required: true
+
+  - type: textarea
+    id: mockups
+    attributes:
+      label: Mockups or Examples
+      description: If you have any mockups, sketches, or examples of similar features, please share them!
+      placeholder: You can drag and drop images here or describe what you envision...
+
+  - type: checkboxes
+    id: implementation
+    attributes:
+      label: Implementation Help
+      description: Are you interested in helping implement this feature?
+      options:
+        - label: I'd like to help implement this feature
+        - label: I can provide design mockups or user research
+        - label: I can help with testing the feature
+        - label: I can help write documentation
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Add any other context or screenshots about the feature request here.
+      placeholder: Any additional information that might be helpful...
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our Code of Conduct
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
