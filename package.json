@@ -17,7 +17,8 @@
     "dev": "nodemon app.js",
     "seed": "node seed-data.js",
     "setup": "node setup-local-mongodb.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test/health-check.js",
+    "test:ci": "node test/health-check.js && echo '✅ All health checks passed!'"
   },
   "author": "",
   "license": "ISC",
