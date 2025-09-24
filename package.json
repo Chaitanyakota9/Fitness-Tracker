@@ -18,7 +18,10 @@
     "seed": "node seed-data.js",
     "setup": "node setup-local-mongodb.js",
     "test": "node test/health-check.js",
-    "test:ci": "node test/health-check.js && echo '✅ All health checks passed!'"
+    "test:ci": "node test/health-check.js && echo '✅ All health checks passed!'",
+    "deploy:railway": "echo '🚀 Deploying to Railway...' && echo 'Visit: https://railway.app'",
+    "deploy:heroku": "echo '🚀 Deploying to Heroku...' && echo 'Run: heroku create your-app-name'",
+    "deploy:render": "echo '🚀 Deploying to Render...' && echo 'Visit: https://render.com'"
   },
   "author": "",
   "license": "ISC",
